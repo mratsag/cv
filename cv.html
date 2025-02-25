@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murat Sağ - CV</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            background: white;
+            margin: 20px auto;
+            padding: 30px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px 12px 0 0;
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        .info {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .info p {
+            margin: 8px 0;
+            font-size: 16px;
+            color: #555;
+        }
+        h2 {
+            color: #007bff;
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 25px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #007bff;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 16px;
+            color: #555;
+        }
+        li strong {
+            color: #333;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        button {
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+        .project-description {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="cv">
+    <div class="header">
+        <h1>Murat Sağ</h1>
+    </div>
+
+    <div class="info">
+        <p><strong>Telefon:</strong> 0551-149-0343</p>
+        <p><strong>Email:</strong> mrat.sag@hotmail.com</p>
+        <p><strong>Adres:</strong> Gaziantep / Şahinbey</p>
+    </div>
+
+    <h2>Hakkımda</h2>
+    <p>Karabük Üniversitesi Bilgisayar Mühendisliği öğrencisiyim. Programlama dillerindeki yetkinliğim ve İngilizce iletişim becerilerimle bilişim sektöründe aktif bir rol oynamayı hedefliyorum.</p>
+
+    <h2>Eğitim</h2>
+    <ul>
+        <li><strong>Karabük Üniversitesi</strong> - Bilgisayar Mühendisliği (2023 - Devam Ediyor)</li>
+    </ul>
+
+    <h2>Beceriler</h2>
+    <ul>
+        <li><strong>Web Geliştirme:</strong> HTML, CSS, React.js, Bootstrap, JavaScript</li>
+        <li><strong>3D Modelleme:</strong> Blender, Cloud Compare</li>
+        <li><strong>Programlama Dilleri:</strong> Java, C, Python, SQL, ML</li>
+        <li><strong>Framework:</strong> Spring Boot</li>
+        <li><strong>Veritabanı Yönetimi:</strong> MySQL, pgAdmin</li>
+        <li><strong>Diller:</strong> Türkçe (Ana Dil), İngilizce (B2)</li>
+    </ul>
+
+    <h2>Sertifikalar</h2>
+    <ul>
+        <li>İlk Yardım - MEB (05/02/2020)</li>
+        <li>Özgüven Geliştirme - Etkin Kampüs (08/03/2020)</li>
+        <li>Etkili İletişim Eğitimi - Etkin Kampüs (08/03/2020)</li>
+        <li>Temel Programlamaya Giriş - IIENSTITU (26/04/2020)</li>
+        <li>Python Eğitimi - IIENSTITU (03/05/2020)</li>
+        <li>Python 101 Sertifikası - Turkcell Akademi (18/12/2022)</li>
+        <li>Sıfırdan İleri Java - BTK Akademi (10/10/2023)</li>
+        <li>Java İleri Seviye - Udemy (12/03/2024)</li>
+    </ul>
+
+    <h2>Projeler</h2>
+    <ul>
+        <li>
+            <strong>Ziraat Bank ATM Simülasyonu</strong>
+            <p class="project-description">Java ile gerçek bir ATM işleyişini simüle eden uygulama geliştirdim.</p>
+            <p><a href="https://github.com/mratsag/Ziraat-ATM-Application" target="_blank">GitHub Projesi</a></p>
+        </li>
+        <li>
+            <strong>Akıllı Wi-Fi Kapsama Yarışması Finalistliği</strong>
+            <p class="project-description">TEKNOFEST & Turkcell 2024 finalist projesinde takım kaptanı olarak görev aldım.</p>
+        </li>
+    </ul>
+
+    <div class="button-container">
+        <button onclick="generatePDF()">PDF Oluştur</button>
+    </div>
+</div>
+
+<script>
+    function generatePDF() {
+        const cv = document.getElementById("cv");
+
+        html2canvas(cv, { scale: 2 }).then(canvas => {
+            const imgData = canvas.toDataURL("image/png");
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF("p", "mm", "a4");
+
+            const imgWidth = 190;
+            const pageHeight = 297;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            let heightLeft = imgHeight;
+            let position = 10;
+
+            pdf.addImage(imgData, "PNG", 10, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+
+            while (heightLeft > 0) {
+                position = heightLeft - imgHeight;
+                pdf.addPage();
+                pdf.addImage(imgData, "PNG", 10, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+            }
+
+            pdf.save("CV_Murat_Sağ.pdf");
+        });
+    }
+</script>
+
+</body>
+</html>
